@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artesanal Blog</title>
+
+    <link rel="stylesheet" href="/style/newPost.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="/img/artesanal_logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class="navbar navbar-light bg-light">
+            <img src="/img/artesanal_logo.png" id="art_logo" alt="">
+            <div class="navbar-brand logo-title-1">Artesanal</div>
+            <div class="navbar-brand logo-title-2">Blog</div>
+        </div>
+    </header>
+    <section>
+        <nav class="navegation">
+            <ol class="breadcrumb">
+                <li><a href="/posts" class="breadcrumb-item">Feed</a></li>
+                <li><a href="#" class="breadcrumb-item active">New Post</a></li>
+            </ol>
+        </nav>
+
+        <div>
+            <div class="container">
+                <h1 class="title">Create your post</h1>
+                <th:block th:include="mensagemValidacao"></th:block>
+                <form method="post">
+                    <div class="form-group">
+                        <h2 class="form_title">Titulo</h2>
+                        <input type="text" class="form-control" name="titulo" placeholder="Digite o título">
+                    </div>
+                    <div class="form-group">
+                        <h2 class="form_title">Autor</h2>
+                        <input type="text" class="form-control" name="autor" placeholder="Digite o autor">
+                    </div>
+                    <h2 class="form_title">Descrição</h2>
+                    <textarea id="summernote" type="text" class="form-control" name="texto"
+                        placeholder="Digite a descrição"></textarea>
+
+                    <p class="form-text text-muted">(*) Campos obrigatórios</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publicar</button>
+            <a href="/posts" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+            </form>
+        </div>
+    </section>
+    <main></main>
+</body>
+
+</html>
