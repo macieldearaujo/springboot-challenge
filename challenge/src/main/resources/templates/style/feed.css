@@ -1,0 +1,46 @@
+.post {
+    padding: 10px 22px;
+    background-color: #24262763;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.171);
+}
+
+.post-info {
+    cursor: pointer;
+    font-size: 14px;
+    color: rgb(148, 148, 148);
+    margin: 15px 0px;
+}
+
+.post-title, .post-description {
+    cursor: pointer;
+}
+
+.post-title {
+    font-size: 32px;
+    color: rgb(241, 241, 241);
+    margin: 20px 0px;
+}
+
+.post-title:hover {
+    text-decoration: underline;
+}
+
+.post-description {
+    font-size: 16px;
+    color: rgb(201, 201, 201);
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 25px;
+    line-height: 1.55;
+    border-radius: 10px;
+}
+
+.post-description:hover {
+    text-decoration: underline;
+}
+
+.post-link {
+    text-decoration: none;
+}
