@@ -4,11 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 
+@Entity
 public class Comment {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -19,6 +21,9 @@ public class Comment {
 
     @Transient
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy (HH:mm)");
+
+    public Comment() {
+    }
 
     public Comment(Long id, Date date, String content, Post post) {
         this.id = id;

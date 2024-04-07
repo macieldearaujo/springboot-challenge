@@ -19,6 +19,9 @@ public class Post {
     private String description;
     private List<Comment> comments;
 
+    public Post() {
+    }
+
     public Post(Long id, String author, Date date, String title, String description, List<Comment> comments) {
         this.id = id;
         this.author = author;
