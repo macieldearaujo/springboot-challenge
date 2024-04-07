@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ChallengeApplication",
+            "request": "launch",
+            "mainClass": "com.springboot.challenge.challenge.ChallengeApplication",
+            "projectName": "challenge"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ChallengeApplication<challenge>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.springboot.challenge.ChallengeApplication",
+            "projectName": "challenge",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
