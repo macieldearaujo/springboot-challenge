@@ -1,4 +1,4 @@
-package com.springboot.challenge.challenge;
+package com.springboot.challenge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
