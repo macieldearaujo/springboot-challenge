@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #17191A;
+    font-family: "Open Sans", sans-serif;
+    cursor: default;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: #242627;
+    width: 100%;
+    max-height: 65px;
+    padding: 15px;
+    box-shadow: 0px 1px 7px rgba(0, 0, 0, 0.418);
+}
+
+.navbar {
+    width: auto;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#art_logo {
+    width: 70px;
+}
+
+.navbar-brand {
+    font-size: 20px;
+}
+
+.logo-title-1 {
+    color: white;
+    text-decoration: none;
+    margin-left: 7px;
+    margin-right: 5px;
+}
+
+.logo-title-2 {
+    margin-left: 7px;
+    color: orange;
+    font-size: 12px;
+}
+
+.navegation {
+    margin: 20px 0px;
+}
+
+section {
+    max-width: 50%;
+    margin: auto;
+}
+
+.container {
+    padding: 10px 22px;
+    background-color: #24262763;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.171);
+}
+
+.form_title {
+    font-size: 16px;
+    margin: 10px 0px;
+    color: #dfe5ee;
+}
+
+.title {
+    font-size: 32px;
+    color: rgb(241, 241, 241);
+    margin: 25px 0px;
+}
+
+.breadcrumb {
+    width: 300px;
+    margin: auto;
+    list-style: none;
+}
+
+li {
+    display: inline;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.breadcrumb-item {
+    font-size: 19px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    display: inline;
+    width: auto;
+}
+
+.active {
+    color: #1f93ff;
+    cursor: default;
+}
+
+.breadcrumb-item:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.active:hover {
+    color: #1f93ff;
+    text-decoration: none;
+}
+
+.form-control {
+    cursor: text;
+    font-size: 16px;
+    background-color: #3A3C3D;
+    color: white;
+    padding: 13px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 25px;
+    line-height: 1.55;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.103);
+}
+
+.form-control::placeholder {
+    color: #a0a0a0;
+}
+
+.form-control:focus {
+    box-shadow: 0px 0px 7px rgb(72, 145, 255);
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.219);
+}
+
+#summernote {
+    padding-top: 10px;
+    font-family: "Open Sans", sans-serif;
+    height: 200px;
+    margin-bottom: 0px;
+    resize: none; /* Remove a capacidade de redimensionamento manual */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se o conteúdo exceder a altura máxima */
+    max-height: 200px; /* Define a altura máxima */
+    min-height: 50px; /* Define a altura mínima */
+}
+
+.form-text {
+    font-size: 14px;
+    color: rgb(214, 214, 214);
+    margin: 15px 0px;
+}
+
+.btn {
+    padding: 14px;
+    width: 150px;
+    margin-right: 10px;
+    font-size: 15px;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.342);
+}
+
+.btn-primary {
+    background-color: #0263E2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: rgb(0, 69, 160);
+}
+
+.btn-light {
+    background-color: #b4b4b4;
+    color: black;
+}
+
+.btn-light:hover {
+    background-color: #d6d6d6;
+    color: rgb(53, 53, 53);
+}
