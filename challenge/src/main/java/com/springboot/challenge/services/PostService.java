@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.challenge.entities.Post;
+import com.springboot.challenge.exception.UserNotFoundException;
 import com.springboot.challenge.repositories.PostRepository;
 
 @Service
@@ -19,7 +20,7 @@ public class PostService {
     }
 
     public Post findPost(Long id) {
-        return postRepository.findPostById(id);
+        return postRepository.findPostById(id).orElseThrow(() -> new UserNotFoundException("Post by id " + id + " was not found."));
     }
 
     public List<Post> findAll() {

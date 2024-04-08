@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Artesanal Investimentos</title>
 
-    <link rel="stylesheet" href="style/default.css">
-    <link rel="stylesheet" href="style/feed.css">
+    <link rel="stylesheet" href="/css/feed.css">
+    <link rel="stylesheet" href="/css/default.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" href="img/artesanal_logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/artesanal_logo.png" type="image/x-icon">
 </head>
 
 <body>
     <header>
         <div class="navbar navbar-light bg-light">
-            <img src="img/artesanal_logo.png" id="art_logo" alt="">
+            <img src="/img/artesanal_logo.png" id="art_logo" alt="">
             <a href="https://www.artesanalinvestimentos.com.br/" target="_blank" style="text-decoration: none;">
                 <div class="navbar-brand logo-title-1">Artesanal</div>
                 <div class="navbar-brand logo-title-2">Blog</div>
@@ -30,18 +30,19 @@
         <nav class="navegation">
             <ol class="breadcrumb">
                 <li><a href="#" class="breadcrumb-item active">Feed</a></li>
-                <li><a href="newPost.html" class="breadcrumb-item">New Post</a></li>
+                <li><a th:href="@{/new-post}" class="breadcrumb-item">New Post</a></li>
             </ol>
         </nav>
 
         <div>
-                <article class="post">
-                    <p class="post-info">Douglas Maciel 2024-04-06</p>
-                    <a href="#" class="post-link"></a><h1 class="post-title">Spring Webflux</h1></a>
-                    <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-                        error iusto explicabo libero soluta tenetur modi nisi. Accusantium quam, ratione aperiam,
-                        dolorum magnam culpa architecto animi harum magni possimus quis.</p>
-                </article>
+            <article class="post">
+                <p class="post-info">Douglas Maciel 2024-04-06</p>
+                <a href="#" class="post-link"></a>
+                <h1 class="post-title">Spring Webflux</h1></a>
+                <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+                    error iusto explicabo libero soluta tenetur modi nisi. Accusantium quam, ratione aperiam,
+                    dolorum magnam culpa architecto animi harum magni possimus quis.</p>
+            </article>
         </div>
     </section>
     <main></main>
