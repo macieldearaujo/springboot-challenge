@@ -1,6 +1,6 @@
-package com.springboot.challenge.repositories;
+// package com.springboot.challenge.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CommentRepository extends JpaRepository<CommentRepository, Long> {
-}
+// public interface CommentRepository extends JpaRepository<CommentRepository, Long> {
+// }
