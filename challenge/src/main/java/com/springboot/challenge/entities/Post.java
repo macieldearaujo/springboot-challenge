@@ -1,6 +1,7 @@
 package com.springboot.challenge.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "posts")
@@ -34,6 +36,9 @@ public class Post implements Serializable {
 
     @Column(nullable=false)
     private Date date;
+
+    @Transient
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy (HH:mm)");
     // private List<Comment> comments;
 
     public Post() {
@@ -147,5 +152,9 @@ public class Post implements Serializable {
         } else {
             return diffDays + " days";
         }
+    }
+
+    public String formattedDate() {
+        return sdf.format(this.getDate());
     }
 }

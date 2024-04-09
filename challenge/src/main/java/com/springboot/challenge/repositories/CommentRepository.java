@@ -1,6 +1,12 @@
-// package com.springboot.challenge.repositories;
+package com.springboot.challenge.repositories;
 
-// import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-// public interface CommentRepository extends JpaRepository<CommentRepository, Long> {
-// }
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.springboot.challenge.entities.Comment;
+
+public interface CommentRepository extends JpaRepository<Comment, Long> {
+    void deleteCommentById(Long id);
+    Optional<Comment> findCommentById(Long id); 
+}
