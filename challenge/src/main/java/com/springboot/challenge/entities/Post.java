@@ -2,6 +2,7 @@ package com.springboot.challenge.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,12 +12,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "posts")
-public class Post implements Serializable {   
-    
+public class Post implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String author;
@@ -37,6 +38,7 @@ public class Post implements Serializable {
     public Long getId() {
         return id;
     }
+
     public String getAuthor() {
         return author;
     }
@@ -70,11 +72,11 @@ public class Post implements Serializable {
     }
 
     // public List<Comment> getComments() {
-    //     return comments;
+    // return comments;
     // }
 
     // public void setComments(List<Comment> comments) {
-    //     this.comments = comments;
+    // this.comments = comments;
     // }
 
     @Override
@@ -107,8 +109,24 @@ public class Post implements Serializable {
         this.author = author;
         this.title = title;
         this.description = description;
-    }    
+    }
 
-    
-    
+    public String timeAgo() {
+        Date nowDate = new Date();
+        long diffMilliseconds = nowDate.getTime() - date.getTime();
+        long diffSeconds = TimeUnit.MILLISECONDS.toSeconds(diffMilliseconds);
+        long diffMinutes = TimeUnit.MILLISECONDS.toMinutes(diffMilliseconds);
+        long diffHours = TimeUnit.MILLISECONDS.toHours(diffMilliseconds);
+        long diffDays = TimeUnit.MILLISECONDS.toDays(diffMilliseconds);
+
+        if (diffSeconds <= 59) {
+            return diffSeconds + " sec";
+        } else if (diffMinutes <= 59) {
+            return diffMinutes + " min";
+        } else if (diffHours <= 23) {
+            return diffHours + " hours";
+        } else {
+            return diffDays + " days";
+        }
+    }
 }

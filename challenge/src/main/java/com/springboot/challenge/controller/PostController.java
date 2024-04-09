@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.springboot.challenge.entities.Post;
@@ -23,6 +24,13 @@ public class PostController {
         List<Post> posts = postService.findAll();
         model.addAttribute("posts", posts);
         return "feed";
+    }
+
+    @GetMapping("/post/{id}")
+    public String showPostDetails(@PathVariable Long id, Model model) {
+        Post post = postService.findPostById(id);
+        model.addAttribute("post", post);
+        return "post";
     }
 
     @GetMapping("/new-post")

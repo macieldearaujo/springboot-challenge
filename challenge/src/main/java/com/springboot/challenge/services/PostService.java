@@ -19,7 +19,7 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public Post findPost(Long id) {
+    public Post findPostById(Long id) {
         return postRepository.findPostById(id).orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found."));
     }
 

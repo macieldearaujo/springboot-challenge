@@ -1,0 +1,58 @@
+.post {
+    padding: 10px 22px;
+    background-color: #24262763;
+    min-height: 600px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.171);
+}
+
+.post-info {
+    cursor: pointer;
+    font-size: 14px;
+    color: rgb(148, 148, 148);
+    margin: 15px 0px;
+}
+
+#author {
+    font-size: 17px;
+    color: rgb(204, 204, 204);
+    font-weight: bold;
+}
+
+.post-title, .post-description {
+    cursor: pointer;
+}
+
+.post-title {
+    font-size: 48px;
+    color: rgb(241, 241, 241);
+    margin-top: 20px;
+}
+
+.post-title:hover {
+    text-decoration: underline;
+}
+
+.post-description {
+    font-size: 15px;
+    color: rgb(201, 201, 201);
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0px;
+    line-height: 1.55;
+    border-radius: 10px;
+}
+
+.post-link {
+    text-decoration: none;
+}
+
+.icon-details-post {
+    width: 25px;
+    opacity: 50%;
+}
+
+#timer {
+    width: 20px;  
+}

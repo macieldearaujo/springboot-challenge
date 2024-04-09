@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Artesanal Investimentos</title>
 
-    <link rel="stylesheet" href="/css/feed.css">
+    <link rel="stylesheet" href="/css/postView.css">
     <link rel="stylesheet" href="/css/default.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,15 +29,19 @@
     <main>
         <nav class="navegation">
             <ol class="breadcrumb">
-                <li><a href="#" class="breadcrumb-item active">Feed</a></li>
+                <li><a th:href="@{/}" class="breadcrumb-item">Feed</a></li>
                 <li><a th:href="@{/new-post}" class="breadcrumb-item">New Post</a></li>
             </ol>
         </nav>
 
-        <section th:each="post : ${posts}" class="post">
-            <a th:href="@{'/post/' + ${post.id}}" style="text-decoration: none;">
-                <p th:text="${post.author}" class="post-info"></p>
+        <section class="post">
+            <a style="text-decoration: none;">
                 <h1 th:text="${post.title}" class="post-title"></h1>
+                <section class="post-details">
+                        <span th:text="${post.author}" class="post-info" id="author"></span>
+                        <span th:text="${post.timeAgo}" class="post-info"></span>
+                        <img src="/img/icon_earth.png" alt="user_icon" class="icon-details-post" style="width: 20px;">
+                </section>
                 <p th:text="${post.description}" class="post-description"></p>
             </a>
         </section>
