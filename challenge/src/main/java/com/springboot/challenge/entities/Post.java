@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,11 +20,20 @@ public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable=false)
     private String title;
+
+    @Column(nullable=false)
     private String author;
-    private Date date;
+
+    @Column(nullable=false, length = 50000)
     private String description;
+
     private String image;
+
+    @Column(nullable=false)
+    private Date date;
     // private List<Comment> comments;
 
     public Post() {

@@ -43,7 +43,6 @@ public class PostController {
         Post newPost = new Post(post.getTitle(), post.getAuthor(), post.getDescription(), new Date());
         postService.savePost(newPost);
 
-        System.out.println("DONE!!");
         return "redirect:/";
     }
     

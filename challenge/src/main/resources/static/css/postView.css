@@ -1,7 +1,8 @@
 .post {
+    word-wrap: break-word;
     padding: 10px 40px;
     background-color: #24262763;
-    min-height: 600px;
+    min-height: auto;
     border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.171);
@@ -20,22 +21,16 @@
     font-weight: bold;
 }
 
-.post-title, .post-description {
-    cursor: pointer;
-}
-
 .post-title {
+    cursor: default;
     font-size: 48px;
     color: rgb(241, 241, 241);
     margin-top: 25px;
     margin-bottom: 3px;
 }
 
-.post-title:hover {
-    text-decoration: underline;
-}
-
 .post-description {
+    cursor: text;
     font-size: 15px;
     color: rgb(201, 201, 201);
     box-sizing: border-box;
@@ -45,9 +40,6 @@
     border-radius: 10px;
 }
 
-.post-link {
-    text-decoration: none;
-}
 
 .icon-details-post {
     width: 25px;
