@@ -26,7 +26,7 @@
             </a>
         </div>
     </header>
-    <section>
+    <main>
         <nav class="navegation">
             <ol class="breadcrumb">
                 <li><a href="#" class="breadcrumb-item active">Feed</a></li>
@@ -34,17 +34,13 @@
             </ol>
         </nav>
 
-        <div>
-            <article class="post">
-                <p class="post-info">Douglas Maciel 2024-04-06</p>
+            <section th:each="post : ${posts}" class="post">
+                <p th:text="${post.author}" class="post-info"></p>
                 <a href="#" class="post-link"></a>
-                <h1 class="post-title">Spring Webflux</h1></a>
-                <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-                    error iusto explicabo libero soluta tenetur modi nisi. Accusantium quam, ratione aperiam,
-                    dolorum magnam culpa architecto animi harum magni possimus quis.</p>
-            </article>
-        </div>
-    </section>
+                <h1 th:text="${post.title}" class="post-title"></h1></a>
+                <p th:text="${post.description}" class="post-description"></p>
+            </section>
+    </main>
     <main></main>
 </body>
 
