@@ -23,6 +23,7 @@ public class Post implements Serializable {
     private String author;
     private Date date;
     private String description;
+    private String image;
     // private List<Comment> comments;
 
     public Post() {
@@ -69,6 +70,14 @@ public class Post implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     // public List<Comment> getComments() {

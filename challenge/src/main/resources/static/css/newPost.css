@@ -1,7 +1,19 @@
 .container {
+    position: relative;;
     padding: 10px 22px;
     background-color: #24262763;
     border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.171);
+}
+
+#upload-btn {
+    height: 30px;
+    color: white;
+}
+
+.text-muted {
+    position: absolute;
+    bottom: 2%;
+    right: 5%;
 }
