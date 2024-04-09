@@ -1,18 +1,22 @@
 package com.springboot.challenge.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.springboot.challenge.entities.Post;
 import com.springboot.challenge.services.PostService;
 
 @Controller
 public class PostController {
-    
+
     @Autowired
     private PostService postService;
 
-    @GetMapping("/feed")
+    @GetMapping("/")
     public String showFeed() {
         return "feed";
     }
@@ -21,4 +25,14 @@ public class PostController {
     public String showFeedPost() {
         return "newPost";
     }
+
+    @PostMapping("/new-post")
+    public String submitForm(Post post) {
+        Post newPost = new Post(post.getTitle(), post.getAuthor(), post.getDescription(), new Date());
+        postService.savePost(newPost);
+
+        System.out.println("DONE!!");
+        return "redirect:/";
+    }
+    
 }

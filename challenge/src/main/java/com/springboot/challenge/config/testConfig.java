@@ -19,7 +19,7 @@ public class testConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Post p1 = new Post(null, "Douglas", new Date(), "Titulo", "Exemplo de descrição");
-        postRepository.save(p1);
+        // Post p1 = new Post(null, "Douglas", new Date(), "Titulo", "Exemplo de descrição");
+        // postRepository.save(p1);
     }
 }
