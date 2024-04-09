@@ -47,36 +47,26 @@
                 </a>
                 <p class="comment-details">0 comments</p>
             </section>
-            <hr style="opacity: 20%;">
             <section class="comment-section">
-                <div class="input-comment-wrapper">
-                    <img src="/img/icon_user.png" alt="" style="width: 30px;">
-                    <input type="text" name="comment" class="input-comment-label" placeholder="Type your comment">
+                    <form th:action="@{/post/{id}(id=${postId})}" method="post" th:object="${comment}" class="comment-form" style="width: 100%;">
+                        <div class="input-comment-wrapper">
+                            <img src="/img/icon_user.png" alt="" style="width: 30px; margin-right: 20px;">
+                        <input type="text" name="comment" class="input-comment-label" placeholder="Type your comment">
+                        <button type="submit" class="btn" id="button-comment-label">Send</button>
+                        </div>
+                    </form>
                 </div>
-                <hr style="opacity: 10%;">
-                <div class="input-comment-wrapper">
+                <hr style="opacity: 10%; margin-top: 7px;">
+                <div th:each="comment : ${comments}" class="comment-wrapper">
                     <img src="/img/icon_user.png" alt="" style="width: 35px;">
                     <div class="comment">
                         <div>
                             <h3 class="username">User</h3>
-                            <p class="comment-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Dignissimos, nihil omnis veritatis animi fugit id veniam vitae exercitationem harum
-                                quidem molestias dolorum incidunt, porro similique, modi corporis cum error natus?
-                                Molestias autem velit sint a accusamus non magni. Non, eaque accusamus ducimus corporis
-                                nemo nesciunt tempore, blanditiis provident tempora asperiores facilis dolor. Quidem
-                                mollitia velit sequi excepturi unde molestias hic.
-                                Optio dolore voluptatem iusto modi possimus, blanditiis earum dolorem explicabo expedita
-                                perferendis? Ipsum officia, expedita saepe illum consectetur autem voluptatum. Maxime
-                                quas doloremque dignissimos. Corporis ipsa nesciunt repellat maiores harum?
-                                Nam, et quia iusto repudiandae deleniti tenetur laborum laudantium quo asperiores
-                                perspiciatis atque reiciendis blanditiis, exercitationem, delectus voluptatem enim
-                                assumenda repellat? Repellat obcaecati esse, illo natus incidunt nesciunt molestiae
-                                nihil?</p>
+                            <p th:text="${comment.description}" class="comment-description"></p>
                         </div>
                     </div>
                 </div>
             </section>
-        </section>
     </main>
 </body>
 

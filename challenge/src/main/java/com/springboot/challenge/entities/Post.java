@@ -128,13 +128,6 @@ public class Post implements Serializable {
         return true;
     }
 
-    public Post(Long id, String author, String title, String description) {
-        this.id = id;
-        this.author = author;
-        this.title = title;
-        this.description = description;
-    }
-
     public String timeAgo() {
         Date nowDate = new Date();
         long diffMilliseconds = nowDate.getTime() - date.getTime();

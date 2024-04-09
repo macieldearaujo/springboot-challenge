@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.springboot.challenge.entities.Comment;
 import com.springboot.challenge.entities.Post;
+import com.springboot.challenge.services.CommentService;
 import com.springboot.challenge.services.PostService;
 
 @Controller
@@ -18,6 +20,9 @@ public class PostController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/")
     public String showFeed(Model model) {
@@ -30,6 +35,9 @@ public class PostController {
     public String showPostDetails(@PathVariable Long id, Model model) {
         Post post = postService.findPostById(id);
         model.addAttribute("post", post);
+
+        List<Comment> comments = commentService.findAll();
+        model.addAttribute("comments", comments);
         return "post";
     }
 

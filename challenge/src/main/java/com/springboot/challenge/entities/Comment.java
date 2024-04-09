@@ -24,14 +24,12 @@ public class Comment implements Serializable {
     public Comment() {
     }
 
-    public Comment(Long id, String description, Long idPost) {
-        this.id = id;
+    public Comment(String description, Long idPost) {
         this.description = description;
         this.idPost = idPost;
     }
 
-    public Comment(Long id, String description, Optional<Post> post) {
-        this.id = id;
+    public Comment(String description, Optional<Post> post) {
         this.description = description;
         idPost = post.orElse(null).getId();
     }
