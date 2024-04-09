@@ -1,5 +1,5 @@
 .post {
-    padding: 10px 22px;
+    padding: 10px 40px;
     background-color: #24262763;
     min-height: 600px;
     border-radius: 10px;
@@ -11,7 +11,7 @@
     cursor: pointer;
     font-size: 14px;
     color: rgb(148, 148, 148);
-    margin: 15px 0px;
+    margin: 20px 0px 30px 0px;
 }
 
 #author {
@@ -27,7 +27,8 @@
 .post-title {
     font-size: 48px;
     color: rgb(241, 241, 241);
-    margin-top: 20px;
+    margin-top: 25px;
+    margin-bottom: 3px;
 }
 
 .post-title:hover {
