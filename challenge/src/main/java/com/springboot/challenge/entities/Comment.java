@@ -1,6 +1,7 @@
 package com.springboot.challenge.entities;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,15 +19,21 @@ public class Comment implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
     private String description;
-    private Post post;
+    private Long idPost;
 
     public Comment() {
     }
 
-    public Comment(Long id, String description, Post post) {
+    public Comment(Long id, String description, Long idPost) {
         this.id = id;
         this.description = description;
-        this.post = post;
+        this.idPost = idPost;
+    }
+
+    public Comment(Long id, String description, Optional<Post> post) {
+        this.id = id;
+        this.description = description;
+        idPost = post.orElse(null).getId();
     }
 
     public Long getId() {
@@ -45,11 +52,11 @@ public class Comment implements Serializable {
         this.description = description;
     }
 
-    public Post getPost() {
-        return post;
+    public Long getIdPost() {
+        return idPost;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setIdPost(Long idPost) {
+        this.idPost = idPost;
     }
 }
