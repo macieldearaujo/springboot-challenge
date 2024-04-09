@@ -54,7 +54,7 @@
     color: rgb(182, 182, 182);
 }
 
-.comment-section {
+.input-comment-section {
     display: flex;
     align-items: center;
     padding: 5px 40px;
@@ -63,13 +63,13 @@
     border-radius: 0px 0px 15px 15px;
 }
 
-.comment-wrapper {
+.input-comment-wrapper {
     display: flex;
     align-items: center; /* Centraliza verticalmente os itens dentro do wrapper */
     width: 100%;
 }
 
-.comment-label {
+.input-comment-label {
     margin-left: 10px;
     font-size: 15px;
     word-wrap: break-word;
