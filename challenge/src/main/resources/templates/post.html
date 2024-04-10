@@ -48,11 +48,10 @@
                 <p class="comment-details">0 comments</p>
             </section>
             <section class="comment-section">
-                <form th:action="@{/post/{id}}" method="post">
+                <form method="post" th:action="@{/post/{id}(id=${id})}" th:object="${comment}">
                     <div class="input-comment-wrapper">
                         <img src="/img/icon_user.png" alt="" style="width: 30px; margin-right: 20px;">
-                        <input type="text" name="description" class="input-comment-label"
-                            placeholder="Type your comment">
+                        <input type="text" name="description" class="input-comment-label" placeholder="Type your comment">
                         <button type="submit" class="btn" id="button-comment-label">Send</button>
                     </div>
                 </form>

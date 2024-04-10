@@ -46,6 +46,14 @@ public class PostController {
         return "post";
     }
 
+    @PostMapping("/post/{id}")
+    public String submitComment(@PathVariable Long id, Comment comment) {
+        Comment newComment = new Comment(comment.getDescription(), id);
+        commentService.saveComment(newComment);
+        System.out.println("PRONTOOOOOOOOOOOOOOOO: " + id);
+        return "redirect:/post/" + id;
+    }
+
     @GetMapping("/new-post")
     public String showFeedPost() {
         return "newPost";
