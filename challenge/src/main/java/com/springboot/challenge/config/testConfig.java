@@ -1,5 +1,6 @@
 package com.springboot.challenge.config;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,10 @@ public class testConfig implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Post p1 = new Post("Exemplo de titulo", "Douglas maciel", "OLA", new Date());
-        postRepository.save(p1);
+        Post p2 = new Post("Exemplo de ", "Douglas ", "OLA", new Date());
+        postRepository.saveAll(Arrays.asList(p1, p2));
 
-        Comment c1 = new Comment("Olá", 1L);
+        Comment c1 = new Comment("Olá", 2L);
         commentRepository.save(c1);
         
     }

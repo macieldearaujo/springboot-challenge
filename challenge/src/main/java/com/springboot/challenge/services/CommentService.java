@@ -1,6 +1,8 @@
 package com.springboot.challenge.services;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,13 @@ public class CommentService {
 
     public Comment updateComment(Comment Comment) {
         return commentRepository.save(Comment);
+    }
+
+    public List<Comment> findCommentsByPostId(Long id) {
+        List<Comment> allComments = commentRepository.findAll().stream()
+        .filter(comment -> comment.getIdPost().equals(id))
+        .collect(Collectors.toList());
+        return allComments;
     }
     
     public void deleteComment(Long id) {

@@ -8,5 +8,5 @@ import com.springboot.challenge.entities.Comment;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     void deleteCommentById(Long id);
-    Optional<Comment> findCommentById(Long id); 
+    Optional<Comment> findCommentById(Long id);
 }

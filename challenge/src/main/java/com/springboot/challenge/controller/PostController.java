@@ -2,6 +2,7 @@ package com.springboot.challenge.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,8 +37,12 @@ public class PostController {
         Post post = postService.findPostById(id);
         model.addAttribute("post", post);
 
-        List<Comment> comments = commentService.findAll();
-        model.addAttribute("comments", comments);
+        List<Comment> comment = commentService.findCommentsByPostId(id).stream().
+            filter(x -> x.getIdPost().equals(id)).
+            collect(Collectors.toList());
+        
+        model.addAttribute("comment", comment);
+
         return "post";
     }
 

@@ -57,4 +57,9 @@ public class Comment implements Serializable {
     public void setIdPost(Long idPost) {
         this.idPost = idPost;
     }
+
+    @Override
+    public String toString() {
+        return "Comment [id=" + id + ", description=" + description + ", idPost=" + idPost + "]";
+    }
 }
