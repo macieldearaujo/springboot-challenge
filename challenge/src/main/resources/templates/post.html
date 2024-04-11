@@ -51,7 +51,8 @@
                 <form method="post" th:action="@{/post/{id}(id=${id})}" th:object="${comment}">
                     <div class="input-comment-wrapper">
                         <img src="/img/icon_user.png" alt="" style="width: 30px; margin-right: 20px;">
-                        <input type="text" name="description" class="input-comment-label" placeholder="Type your comment">
+                        <input type="text" name="description" class="input-comment-label"
+                            placeholder="Type your comment" required>
                         <button type="submit" class="btn" id="button-comment-label">Send</button>
                     </div>
                 </form>
@@ -64,9 +65,33 @@
                             <p th:text="${comment.description}" class="comment-description"></p>
                         </div>
                     </div>
+                    <img src="/img/icon_three_dots.png" alt="" class="comment-options">
+                    <ul class="comment-options-menu">
+                        <li class="comment-options-menu-actions">Editar</li>
+                        <li class="comment-options-menu-actions">Excluir</li>
+                    </ul>
                 </div>
             </section>
     </main>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const commentOptions = document.querySelectorAll('.comment-options');
+        const commentOptionsMenus = document.querySelectorAll('.comment-options-menu');
+
+        commentOptions.forEach((option, i) => {
+            option.addEventListener('click', () => {
+                const commentOptionsMenu = option.nextElementSibling;
+
+                commentOptionsMenus.forEach(menu => {
+                    if (menu !== commentOptionsMenu) {
+                    menu.classList.remove('show-menu');
+                }})
+                commentOptionsMenu.classList.toggle('show-menu');
+            });
+        });
+    });
+</script>
+
 
 </html>
