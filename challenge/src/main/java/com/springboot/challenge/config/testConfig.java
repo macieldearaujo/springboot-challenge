@@ -30,7 +30,6 @@ public class testConfig implements CommandLineRunner {
         postRepository.saveAll(Arrays.asList(p1, p2));
 
         Comment c1 = new Comment("Olá", 2L);
-        commentRepository.save(c1);
-        
+        commentRepository.save(c1);        
     }
 }

@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -32,7 +33,8 @@ public class Post implements Serializable {
     @Column(nullable=false, length = 50000)
     private String description;
 
-    private String image;
+    @Transient
+    private Photo image;
 
     @Column(nullable=false)
     private Date date;
@@ -87,11 +89,11 @@ public class Post implements Serializable {
         this.description = description;
     }
 
-    public String getImage() {
+    public Photo getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Photo image) {
         this.image = image;
     }
 

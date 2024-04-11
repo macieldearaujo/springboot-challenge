@@ -51,7 +51,7 @@
                         placeholder="Enter the description" required></textarea>
                     <p class="form-text text-muted">(*) Required fields</p>
                     <hr style="opacity: 10%; margin: 20px 0px;">
-                    <input type="file" name="file" accept="image/*" id="upload-btn">
+                    <input type="file" name="file" accept="image/*" multiple="multiple" id="upload-btn">
             </div>
             <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publish</button>
             <a th:href="@{/}" class="btn btn-light" role="button" style="margin-top: 10px;">Cancel</a>
