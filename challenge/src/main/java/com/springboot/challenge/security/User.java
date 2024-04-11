@@ -1,6 +1,5 @@
 package com.springboot.challenge.security;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,6 +17,9 @@ public class User {
         this.username = username;
         this.password = password;
     }
+    public Integer getId() {
+        return id;
+    }
     public String getUsername() {
         return username;
     }
@@ -29,5 +31,5 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
-    }    
+    }
 }
