@@ -10,7 +10,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -44,6 +43,14 @@ public class Post implements Serializable {
     // private List<Comment> comments;
 
     public Post() {
+    }
+
+    public Post(Long id, String title, String author, String description, Date date) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.date = date;
     }
 
     public Post(String title, String author, String description, Date date) {

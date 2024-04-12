@@ -27,7 +27,8 @@ public class testConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Post p1 = new Post("Exemplo de titulo", "Douglas maciel", "OLA", new Date());
         Post p2 = new Post("Exemplo de ", "Douglas ", "OLA", new Date());
-        postRepository.saveAll(Arrays.asList(p1, p2));
+        Post p3 = new Post(2L, "nop ", "não ", "Não", new Date()); //testing upload
+        postRepository.saveAll(Arrays.asList(p1, p2, p3));
 
         Comment c1 = new Comment("Olá", 2L);
         commentRepository.save(c1);        
