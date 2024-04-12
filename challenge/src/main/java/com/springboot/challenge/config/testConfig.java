@@ -25,12 +25,12 @@ public class testConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Post p1 = new Post("Exemplo de titulo", "Douglas maciel", "OLA", new Date());
-        Post p2 = new Post("Exemplo de ", "Douglas ", "OLA", new Date());
-        Post p3 = new Post(2L, "nop ", "não ", "Não", new Date()); //testing upload
-        postRepository.saveAll(Arrays.asList(p1, p2, p3));
+        Post p1 = new Post("Onde consigo investir na Artesanal Investimentos?", "Pedro da Silva", "Olá pessoal, gostaria de saber em qual plataforma eu consigo achar os fundos da Artesanal Investimentos. Fiquei realmente encantado com a empresa!", new Date());
+        Post p2 = new Post("Existe fundo de renda fixa da Artesanal?", "Douglas ", "Boa tarde, eu gostaria de saber se a Artesanal disponibiliza fundo de renda fixa. Estou iniciando no mercado financeiro e gostaria de começar com um investimento mais seguro.", new Date());
+        postRepository.saveAll(Arrays.asList(p1, p2));
 
-        Comment c1 = new Comment("Olá", 2L);
-        commentRepository.save(c1);        
+        Comment c1 = new Comment("Sim, com certeza, com 100 reais você já consegue começar investindo. Qualquer dúvida estou a disposição.", 2L);
+        Comment c2 = new Comment("Existem diversos bancos e corretoras para você invertir na Artesanal, dentre elas: NU Invest, Btg Pactual, Empiricus, Singulare, entre outros.", 1L);
+        commentRepository.saveAll(Arrays.asList(c1, c2));        
     }
 }
