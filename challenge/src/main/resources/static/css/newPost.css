@@ -1,12 +1,12 @@
 :root {
-    --background: #ffffff;
+    --container-background: #ffffff;
 }
 
 .container {
     position: relative;;
     border: 0.5px solid rgba(0, 0, 0, 0.096);
     padding: 10px 22px;
-    background-color: var(--background);
+    background-color: var(--container-background);
     border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.171);
