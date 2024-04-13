@@ -1,6 +1,6 @@
 :root {
     --main-background: #FFFFFF;
-    --post-info: #ffa500;
+    --post-info: #525252;
     --post-description: #474747;
     --input-comment-label: #F1F2F6;
     --title: #002538;
@@ -30,7 +30,7 @@
 
 #author {
     font-size: 17px;
-    color: var(--post-info);
+    color: #ffa500;
     font-weight: bold;
 }
 
