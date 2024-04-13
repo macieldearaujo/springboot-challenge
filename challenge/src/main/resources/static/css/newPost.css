@@ -1,7 +1,12 @@
+:root {
+    --background: #ffffff;
+}
+
 .container {
     position: relative;;
+    border: 0.5px solid rgba(0, 0, 0, 0.096);
     padding: 10px 22px;
-    background-color: #24262763;
+    background-color: var(--background);
     border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.171);
@@ -9,11 +14,73 @@
 
 #upload-btn {
     height: 30px;
-    color: white;
+    color: #333333;
 }
 
 .text-muted {
     position: absolute;
     bottom: 2%;
     right: 5%;
+}
+
+.form-control {
+    cursor: text;
+    font-size: 16px;
+    background-color: #F1F2F6;
+    color: rgb(58, 58, 58);
+    padding: 13px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 25px;
+    line-height: 1.55;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.103);
+}
+
+.form-control::placeholder {
+    color: #a0a0a0;
+}
+
+.form-control:focus {
+    box-shadow: 0px 0px 7px rgba(72, 145, 255, 0.425);
+    outline: none;
+    border: none;
+}
+
+.form-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(255, 154, 22);
+    margin: 15px 0px;
+}
+
+#description {
+    padding-top: 10px;
+    font-family: "Open Sans", sans-serif;
+    height: 200px;
+    margin-bottom: 0px;
+    resize: none;
+    overflow-y: auto;
+    max-height: 200px;
+    min-height: 50px;
+}
+
+.btn-primary {
+    background-color: #0263E2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: rgb(0, 69, 160);
+}
+
+.btn-light {
+    background-color: #b4b4b4;
+    color: black;
+}
+
+.btn-light:hover {
+    background-color: #d6d6d6;
+    color: rgb(53, 53, 53);
 }
