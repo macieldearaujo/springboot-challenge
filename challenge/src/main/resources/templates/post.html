@@ -47,7 +47,7 @@
                         </section>
                         <p th:text="${post.description}" class="post-description"></p>
                     </a>
-                    <p class="comment-details">0 comments</p>
+                    <p th:text="${post.commentsNumber}" class="comment-details"></p>
                 </section>
                 <section class="comment-section">
                     <form method="post" th:action="@{/post/{id}(id=${id})}" th:object="${comment}">

@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Profile;
 
 import com.springboot.challenge.entities.Comment;
 import com.springboot.challenge.entities.Post;
-import com.springboot.challenge.repositories.CommentRepository;
 import com.springboot.challenge.repositories.PostRepository;
+import com.springboot.challenge.services.CommentService;
 
 @Configuration
 @Profile("dev")
@@ -21,16 +21,17 @@ public class testConfig implements CommandLineRunner {
     private PostRepository postRepository;
 
     @Autowired
-    private CommentRepository commentRepository;
+    private CommentService commentService;
 
     @Override
-    public void run(String... args) throws Exception {
-        Post p1 = new Post("Onde consigo investir na Artesanal Investimentos?", "Pedro da Silva", "Olá pessoal, gostaria de saber em qual plataforma eu consigo achar os fundos da Artesanal Investimentos. Fiquei realmente encantado com a empresa!", new Date());
-        Post p2 = new Post("Existe fundo de renda fixa da Artesanal?", "Douglas ", "Boa tarde, eu gostaria de saber se a Artesanal disponibiliza fundo de renda fixa. Estou iniciando no mercado financeiro e gostaria de começar com um investimento mais seguro.", new Date());
-        postRepository.saveAll(Arrays.asList(p1, p2));
+public void run(String... args) throws Exception {
+    Post p1 = new Post("Onde consigo investir na Artesanal Investimentos?", "Pedro da Silva", "Olá pessoal, gostaria de saber em qual plataforma eu consigo achar os fundos da Artesanal Investimentos. Fiquei realmente encantado com a empresa!", new Date());
+    Post p2 = new Post("Existe fundo de renda fixa da Artesanal?", "Douglas ", "Boa tarde, eu gostaria de saber se a Artesanal disponibiliza fundo de renda fixa. Estou iniciando no mercado financeiro e gostaria de começar com um investimento mais seguro.", new Date());
+    postRepository.saveAll(Arrays.asList(p1, p2));
 
-        Comment c1 = new Comment("Sim, com certeza, com 100 reais você já consegue começar investindo. Qualquer dúvida estou a disposição.", 2L);
-        Comment c2 = new Comment("Existem diversos bancos e corretoras para você invertir na Artesanal, dentre elas: NU Invest, Btg Pactual, Empiricus, Singulare, entre outros.", 1L);
-        commentRepository.saveAll(Arrays.asList(c1, c2));        
-    }
+    Comment c1 = new Comment("Sim, com certeza, com 100 reais você já consegue começar investindo. Qualquer dúvida estou a disposição.", p1.getId());
+    Comment c2 = new Comment("Existem diversos bancos e corretoras para você investir na Artesanal, dentre elas: NU Invest, Btg Pactual, Empiricus, Singulare, entre outros.", p2.getId());
+    commentService.saveAll(Arrays.asList(c1, c2));
+}
+
 }

@@ -2,7 +2,10 @@ package com.springboot.challenge.entities;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import jakarta.persistence.Column;
@@ -40,7 +43,9 @@ public class Post implements Serializable {
 
     @Transient
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy (HH:mm)");
-    // private List<Comment> comments;
+
+    @Transient
+    private List<Comment> comments = new ArrayList<>();
 
     public Post() {
     }
@@ -104,13 +109,44 @@ public class Post implements Serializable {
         this.image = image;
     }
 
-    // public List<Comment> getComments() {
-    // return comments;
-    // }
+    public List<Comment> getComments() {
+    return comments;
+    }
 
-    // public void setComments(List<Comment> comments) {
-    // this.comments = comments;
-    // }
+    public void setComments(List<Comment> comments) {
+    this.comments = comments;
+    }
+
+    public String commentsNumber() {
+        return comments.size() + " comments";
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
+
+    public String timeAgo() {
+        Date nowDate = new Date();
+        long diffMilliseconds = nowDate.getTime() - date.getTime();
+        long diffSeconds = TimeUnit.MILLISECONDS.toSeconds(diffMilliseconds);
+        long diffMinutes = TimeUnit.MILLISECONDS.toMinutes(diffMilliseconds);
+        long diffHours = TimeUnit.MILLISECONDS.toHours(diffMilliseconds);
+        long diffDays = TimeUnit.MILLISECONDS.toDays(diffMilliseconds);
+
+        if (diffSeconds <= 59) {
+            return diffSeconds + " sec";
+        } else if (diffMinutes <= 59) {
+            return diffMinutes + " min";
+        } else if (diffHours <= 23) {
+            return diffHours + " hours";
+        } else {
+            return diffDays + " days";
+        }
+    }
+
+    public String formattedDate() {
+        return sdf.format(this.getDate());
+    }
 
     @Override
     public int hashCode() {
@@ -135,28 +171,5 @@ public class Post implements Serializable {
         } else if (!id.equals(other.id))
             return false;
         return true;
-    }
-
-    public String timeAgo() {
-        Date nowDate = new Date();
-        long diffMilliseconds = nowDate.getTime() - date.getTime();
-        long diffSeconds = TimeUnit.MILLISECONDS.toSeconds(diffMilliseconds);
-        long diffMinutes = TimeUnit.MILLISECONDS.toMinutes(diffMilliseconds);
-        long diffHours = TimeUnit.MILLISECONDS.toHours(diffMilliseconds);
-        long diffDays = TimeUnit.MILLISECONDS.toDays(diffMilliseconds);
-
-        if (diffSeconds <= 59) {
-            return diffSeconds + " sec";
-        } else if (diffMinutes <= 59) {
-            return diffMinutes + " min";
-        } else if (diffHours <= 23) {
-            return diffHours + " hours";
-        } else {
-            return diffDays + " days";
-        }
-    }
-
-    public String formattedDate() {
-        return sdf.format(this.getDate());
     }
 }
