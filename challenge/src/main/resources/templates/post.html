@@ -65,6 +65,9 @@
                             <div>
                                 <h3 class="username">User</h3>
                                 <p th:text="${comment.description}" class="comment-description"></p>
+                                <form method="post" id="edit-comment-form">
+                                    <input type="text" name="edit-comment">
+                                </form>
                             </div>
                         </div>
                         <img src="/img/icon_three_dots.png" alt="" class="comment-options">

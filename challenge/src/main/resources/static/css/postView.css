@@ -129,9 +129,14 @@
 }
 
 .comment-description {
+    position: relative;
     cursor: text;
     word-wrap: break-word;
     color: var(--comment-description);
+}
+
+.edit-comment-form {
+    position: absolute;
 }
 
 .comment-options {
