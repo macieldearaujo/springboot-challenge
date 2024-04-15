@@ -30,8 +30,8 @@
         <section class="container">
             <nav class="navigation-nav">
                 <ol class="navigation-item-ol">
-                    <li><a th:href="@{/}" class="navigation-item navigation-item-active">Feed</a></li>
-                    <li><a th:href="@{/new-post}" class="navigation-item">New Post</a></li>
+                    <li class="navigation-item-li"><a th:href="@{/}" class="navigation-item navigation-item-active">Feed</a></li>
+                    <li class="navigation-item-li"><a th:href="@{/new-post}" class="navigation-item">New Post</a></li>
                 </ol>
             </nav>
 
@@ -70,6 +70,7 @@
                         <img src="/img/icon_three_dots.png" alt="" class="comment-options">
                         <ul class="comment-options-menu">
                             <li class="comment-options-menu-actions">Editar</li>
+                            <hr style="opacity: 10%">
                             <li class="comment-options-menu-actions">Excluir</li>
                         </ul>
                     </div>

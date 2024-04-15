@@ -81,7 +81,7 @@ main {
     list-style: none;
 }
 
-li {
+.navigation-item-li {
     display: inline;
     font-size: 18px;
     margin-right: 15px;
