@@ -30,7 +30,8 @@
         <section class="container">
             <nav class="navigation-nav">
                 <ol class="navigation-item-ol">
-                    <li class="navigation-item-li"><a th:href="@{/}" class="navigation-item navigation-item-active">Feed</a></li>
+                    <li class="navigation-item-li"><a th:href="@{/}"
+                            class="navigation-item navigation-item-active">Feed</a></li>
                     <li class="navigation-item-li"><a th:href="@{/new-post}" class="navigation-item">New Post</a></li>
                 </ol>
             </nav>
@@ -59,23 +60,26 @@
                         </div>
                     </form>
                     <hr style="opacity: 10%; margin-top: 7px;">
-                    <div th:each="comment : ${comment}" class="comment-wrapper">
-                        <img src="/img/icon_user.png" alt="" style="width: 35px;">
-                        <div class="comment">
-                            <div>
-                                <h3 class="username">User</h3>
-                                <p th:text="${comment.description}" class="comment-description"></p>
-                                <form method="post" id="edit-comment-form">
-                                    <input type="text" name="edit-comment">
-                                </form>
+                    <div th:each="comment : ${comment}">
+                        <form method="post" class="edit-comment-form comment-wrapper">
+                            <img src="/img/icon_user.png" alt="" style="width: 35px;">
+                            <div class="comment">
+                                <div class="comment-container-message">
+                                    <h3 class="username">User</h3>
+                                    <div class="comment-content">
+                                        <p th:text="${comment.description}" class="comment-description"></p>
+                                        <textarea type="text" name="edit-comment" class="comment-edit comment-description"></textarea>
+                                        <button type="submit" style="cursor: pointer;"><img src="/img/icon_send.png" class="comment-img"></button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <img src="/img/icon_three_dots.png" alt="" class="comment-options">
-                        <ul class="comment-options-menu">
-                            <li class="comment-options-menu-actions">Editar</li>
-                            <hr style="opacity: 10%">
-                            <li class="comment-options-menu-actions">Excluir</li>
-                        </ul>
+                            <img src="/img/icon_three_dots.png" alt="" class="comment-options">
+                            <ul class="comment-options-menu">
+                                <li class="comment-options-menu-actions">Editar</li>
+                                <hr style="opacity: 10%">
+                                <li class="comment-options-menu-actions">Excluir</li>
+                            </ul>
+                        </form>
                     </div>
                 </section>
             </section>
@@ -99,6 +103,31 @@
             });
         });
     });
+
+    const editCommentForm = document.querySelectorAll('.edit-comment-form');
+
+    editCommentForm.forEach((item, i) => {
+        const paragraph = item.querySelector('.comment-description');
+        const editInput = item.querySelector('.comment-edit');
+        const editButton = item.querySelector('.comment-options-menu-actions');
+        const commentContent = item.querySelector('.comment-content');
+        const sendButton = item.querySelector('.comment-img');
+
+        editButton.addEventListener('click', () => {
+            const editOptions = document.querySelector('.comment-options-menu');
+            editOptions.classList.remove('show-menu');
+            editInput.style.display = 'block';
+            editInput.focus();
+            sendButton.style.display = 'block'
+            paragraph.style.display = 'none';
+            editInput.value = paragraph.textContent;
+        })
+    })
+
+    function adjustTextareaHeight(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+}
 </script>
 
 
