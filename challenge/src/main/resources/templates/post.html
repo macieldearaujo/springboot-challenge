@@ -51,24 +51,24 @@
                     <p th:text="${post.commentsNumber}" class="comment-details"></p>
                 </section>
                 <section class="comment-section">
-                    <form method="post" th:action="@{/post/{id}(id=${id})}" th:object="${comment}">
+                    <form method="post" th:action="@{/post/{id}(id=${id})}" th:object="${addComment}">
                         <div class="input-comment-wrapper">
                             <img src="/img/icon_user.png" alt="" style="width: 30px; margin-right: 20px;">
-                            <input type="text" name="description" class="input-comment-label"
-                                placeholder="Type your comment" required>
+                            <input type="text" name="description" class="input-comment-label" placeholder="Type your comment" required>
                             <button type="submit" class="btn" id="button-comment-label">Send</button>
                         </div>
                     </form>
                     <hr style="opacity: 10%; margin-top: 7px;">
                     <div th:each="comment : ${comment}">
-                        <form method="post" class="edit-comment-form comment-wrapper">
+                        <form method="post" class="edit-comment-form comment-wrapper" th:object="${editComment}">
                             <img src="/img/icon_user.png" alt="" style="width: 35px;">
                             <div class="comment">
                                 <div class="comment-container-message">
                                     <h3 class="username">User</h3>
                                     <div class="comment-content">
                                         <p th:text="${comment.description}" class="comment-description"></p>
-                                        <textarea type="text" name="edit-comment" class="comment-edit comment-description"></textarea>
+                                        <input type="hidden" name="commentId" th:value="${comment.Id}">
+                                        <textarea type="text" name="description" class="comment-edit comment-description"></textarea>
                                         <button type="submit" style="cursor: pointer;"><img src="/img/icon_send.png" class="comment-img"></button>
                                     </div>
                                 </div>
