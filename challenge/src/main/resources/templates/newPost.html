@@ -37,16 +37,17 @@
         <div>
             <div class="container">
                 <h1 class="title">Create your post</h1>
+                <p class="subtitle">Share Your Questions with the Community</p>
                 <form method="post" action="/new-post" th:object="${post}">
                     <div class="form-group">
-                        <h2 class="form_title">Title</h2>
+                        <h2 class="form_title">Title *</h2>
                         <input type="text" class="form-control" name="title" placeholder="Enter the title" required>
                     </div>
                     <div class="form-group">
-                        <h2 class="form_title">Author</h2>
+                        <h2 class="form_title">Author *</h2>
                         <input type="text" class="form-control" name="author" placeholder="Enter the autor" required>
                     </div>
-                    <h2 class="form_title">Description</h2>
+                    <h2 class="form_title">Description *</h2>
                     <textarea id="description" type="text" class="form-control" name="description"
                         placeholder="Enter the description" required></textarea>
                     <p class="form-text text-muted">(*) Required fields</p>

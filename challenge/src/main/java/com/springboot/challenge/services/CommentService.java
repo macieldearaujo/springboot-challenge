@@ -22,6 +22,7 @@ public class CommentService {
 
     public Comment saveComment(Comment comment) {
         Post post = postService.findPostById(comment.getIdPost());
+        comment.setPost(post);
         post.addComment(comment);
         return commentRepository.save(comment);
     }
@@ -29,6 +30,7 @@ public class CommentService {
     public List<Comment> saveAll(List<Comment> comments) {
         for (Comment com : comments) {
             Post post = postService.findPostById(com.getIdPost());
+            com.setPost(post);
             post.addComment(com);
         }
         return commentRepository.saveAll(comments);

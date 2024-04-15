@@ -3,16 +3,20 @@ package com.springboot.challenge.entities;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -44,7 +48,8 @@ public class Post implements Serializable {
     @Transient
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy (HH:mm)");
 
-    @Transient
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
 
     public Post() {
@@ -52,13 +57,6 @@ public class Post implements Serializable {
 
     public Post(Long id, String title, String author, String description, Date date) {
         this.id = id;
-        this.title = title;
-        this.author = author;
-        this.description = description;
-        this.date = date;
-    }
-
-    public Post(String title, String author, String description, Date date) {
         this.title = title;
         this.author = author;
         this.description = description;
@@ -116,6 +114,8 @@ public class Post implements Serializable {
     public void setComments(List<Comment> comments) {
     this.comments = comments;
     }
+
+    
 
     public String commentsNumber() {
         return comments.size() + " comments";

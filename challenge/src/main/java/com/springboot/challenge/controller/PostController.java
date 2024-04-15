@@ -48,9 +48,8 @@ public class PostController {
 
     @PostMapping("/post/{id}")
     public String submitComment(@PathVariable Long id, Comment comment) {
-        Comment newComment = new Comment(comment.getDescription(), id);
+        Comment newComment = new Comment(null, comment.getDescription(), id);
         commentService.saveComment(newComment);
-        System.out.println("PRONTOOOOOOOOOOOOOOOO: " + id);
         return "redirect:/post/" + id;
     }
 
@@ -61,7 +60,7 @@ public class PostController {
 
     @PostMapping("/new-post")
     public String submitForm(Post post) {
-        Post newPost = new Post(post.getTitle(), post.getAuthor(), post.getDescription(), new Date());
+        Post newPost = new Post(null, post.getTitle(), post.getAuthor(), post.getDescription(), new Date());
         postService.savePost(newPost);
 
         return "redirect:/";
