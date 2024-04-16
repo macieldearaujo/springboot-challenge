@@ -32,5 +32,7 @@ public class testConfig implements CommandLineRunner {
         Comment c1 = new Comment(null, "Sim, com certeza, com 100 reais você já consegue começar investindo. Qualquer dúvida estou a disposição.", p1.getId());
         Comment c2 = new Comment(null, "Existem diversos bancos e corretoras para você investir na Artesanal, dentre elas: NU Invest, Btg Pactual, Empiricus, Singulare, entre outros.", p2.getId());
         commentService.saveAll(Arrays.asList(c1, c2));
+
+        commentService.deleteComment(c2.getId());
     }
 }

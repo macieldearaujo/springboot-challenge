@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +16,9 @@ import com.springboot.challenge.entities.Comment;
 import com.springboot.challenge.entities.Post;
 import com.springboot.challenge.services.CommentService;
 import com.springboot.challenge.services.PostService;
+
+import jakarta.transaction.Transactional;
+
 
 @Controller
 public class PostController {
@@ -48,14 +50,18 @@ public class PostController {
     }
 
     @PostMapping("/post/{id}")
-    public String submitComment(@PathVariable Long id, @RequestParam(value="commentId", required = false) Long commentId, Comment comment) {
+    @Transactional
+    public String submitComment(@PathVariable Long id,
+            @RequestParam(value = "commentId", required = false) Long commentId, Comment comment) {
         if (commentId == null) {
             Comment createNewComment = new Comment(null, comment.getDescription(), id);
             commentService.saveComment(createNewComment);
+            System.out.println("Adicionar");
         } else {
             Comment findComment = commentService.findCommentById(commentId);
             findComment.setDescription(comment.getDescription());
             commentService.saveComment(findComment);
+            System.out.println("Edit");
         }
         return "redirect:/post/" + id;
     }
@@ -73,4 +79,10 @@ public class PostController {
         return "redirect:/";
     }
 
+    @PostMapping("/post/{id}/comment/{commentId}/delete")
+    public String postMethodName(@PathVariable Long id, @PathVariable Long commentId) {
+        System.out.println("deu certo");
+        commentService.deleteComment(commentId);
+        return "redirect:/post/" + id;
+    }    
 }

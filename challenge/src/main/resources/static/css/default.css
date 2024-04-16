@@ -16,12 +16,16 @@
 body {
     background-color: var(--background);
     font-family: "Open Sans", sans-serif;
-    cursor: default;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 header {
     display: flex;
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    left: 0;
     align-items: center;
     color: var(--header-logo);
     background-color: var(--header);
@@ -176,4 +180,26 @@ main {
 .btn-light:hover {
     background-color: #8f8f8f;
     color: rgb(53, 53, 53);
+}
+
+footer {
+    width: 100%;
+    margin-top:20px;
+    padding: 5px;
+    bottom: 0;
+    position: fixed;
+    background-color: var(--header);
+}
+
+#footer-paragraph {
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    margin: auto;
+}
+
+#footer-paragraph a {
+    color: white;
+    font-weight: bold;
+
 }

@@ -38,52 +38,73 @@
 
             <section class="container-post">
                 <section class="post">
-                    <a style="text-decoration: none;">
+                    <div class="post-option-wrapper">
                         <h1 th:text="${post.title}" class="post-title"></h1>
-                        <section class="post-details">
-                            <span th:text="${post.author}" class="post-info" id="author"></span>
-                            <span th:text="${post.timeAgo}" class="post-info"></span>
-                            <img src="/img/icon_earth.png" alt="user_icon" class="icon-details-post"
-                                style="width: 20px;">
-                        </section>
-                        <p th:text="${post.description}" class="post-description"></p>
-                    </a>
+                        <img src="/img/icon_three_dots.png" class="post-options">
+                        <form method="post" class="post-options-menu" th:action="@{'/post/' + ${post.id}}">
+                            <ul>
+                                <li class="post-options-menu-actions">Editar</li>
+                                <hr style="opacity: 10%">
+                                <input type="hidden" name="action" value="delete">
+                                <li class="post-options-menu-actions"><button type="submit"
+                                        class="deleteButton">Excluir</button></li>
+                            </ul>
+                        </form>
+                    </div>
+                    <section class="post-details">
+                        <span th:text="${post.author}" class="post-info" id="author"></span>
+                        <span th:text="${post.timeAgo}" class="post-info"></span>
+                        <img src="/img/icon_earth.png" alt="user_icon" class="icon-details-post" style="width: 20px;">
+                    </section>
+                    <p th:text="${post.description}" class="post-description"></p>
+
                     <p th:text="${post.commentsNumber}" class="comment-details"></p>
                 </section>
                 <section class="comment-section">
                     <form method="post" th:action="@{/post/{id}(id=${id})}" th:object="${addComment}">
                         <div class="input-comment-wrapper">
                             <img src="/img/icon_user.png" alt="" style="width: 30px; margin-right: 20px;">
-                            <input type="text" name="description" class="input-comment-label" placeholder="Type your comment" required>
+                            <input type="text" name="description" class="input-comment-label"
+                                placeholder="Type your comment" required>
                             <button type="submit" class="btn" id="button-comment-label">Send</button>
                         </div>
                     </form>
                     <hr style="opacity: 10%; margin-top: 7px;">
-                    <div th:each="comment : ${comment}">
-                        <form method="post" class="edit-comment-form comment-wrapper" th:object="${editComment}">
-                            <img src="/img/icon_user.png" alt="" style="width: 35px;">
-                            <div class="comment">
-                                <div class="comment-container-message">
-                                    <h3 class="username">User</h3>
-                                    <div class="comment-content">
-                                        <p th:text="${comment.description}" class="comment-description"></p>
-                                        <input type="hidden" name="commentId" th:value="${comment.Id}">
-                                        <textarea type="text" name="description" class="comment-edit comment-description"></textarea>
-                                        <button type="submit" style="cursor: pointer;"><img src="/img/icon_send.png" class="comment-img"></button>
-                                    </div>
+                    <div th:each="comment : ${comment}" class="edit-comment-form comment-wrapper">
+                        <img src="/img/icon_user.png" alt="" style="width: 35px;">
+                        <form method="post" th:object="${editComment}" class="comment">
+                            <div class="comment-container-message">
+                                <h3 class="username">User</h3>
+                                <div class="comment-content">
+                                    <p th:text="${comment.description}" class="comment-description"></p>
+                                    <input type="hidden" name="commentId" th:value="${comment.Id}">
+                                    <input type="text" name="description"
+                                        class="comment-edit comment-description"></input>
+                                    <button type="submit" style="cursor: pointer;"><img src="/img/icon_send.png"
+                                            class="comment-img"></button>
                                 </div>
                             </div>
-                            <img src="/img/icon_three_dots.png" alt="" class="comment-options">
-                            <ul class="comment-options-menu">
+                        </form>
+                        <img src="/img/icon_three_dots.png" alt="" class="comment-options">
+                        <form method="post" class="comment-options-menu"
+                            th:action="@{'/post/' + ${post.id} + '/comment/' + ${comment.id} + '/delete'}">
+                            <ul>
                                 <li class="comment-options-menu-actions">Editar</li>
                                 <hr style="opacity: 10%">
-                                <li class="comment-options-menu-actions">Excluir</li>
+                                <input type="hidden" name="action" value="delete">
+                                <li class="comment-options-menu-actions"><button type="submit"
+                                        class="deleteButton">Excluir</button></li>
                             </ul>
                         </form>
                     </div>
                 </section>
             </section>
     </main>
+    <footer>
+        <p id="footer-paragraph">Site criado por <a href="https://github.com/macieldearaujo" target="_blank">Douglas
+                Maciel de Araújo</a> para a <a href="https://www.artesanalinvestimentos.com.br/"
+                target="_blank">Artesanal Investimentos</a></p>
+    </footer>
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -104,30 +125,41 @@
         });
     });
 
-    const editCommentForm = document.querySelectorAll('.edit-comment-form');
+    const editCommentForm = document.querySelectorAll('.comment-wrapper');
 
     editCommentForm.forEach((item, i) => {
         const paragraph = item.querySelector('.comment-description');
         const editInput = item.querySelector('.comment-edit');
         const editButton = item.querySelector('.comment-options-menu-actions');
+        const deleteButton = item.querySelector('.deleteButton');
         const commentContent = item.querySelector('.comment-content');
         const sendButton = item.querySelector('.comment-img');
+        const optionsMenu = item.querySelector('.comment-options-menu');
 
         editButton.addEventListener('click', () => {
+            editCommentForm.forEach((otherItem) => {
+                if (otherItem !== item) {
+                    otherItem.querySelector('.comment-edit').style.display = 'none';
+                    otherItem.querySelector('.comment-description').style.display = 'block';
+                    otherItem.querySelector('.comment-options-menu').classList.remove('show-menu');
+                    otherItem.querySelector('.comment-img').style.display = 'none';
+                }
+            });
             const editOptions = document.querySelector('.comment-options-menu');
             editOptions.classList.remove('show-menu');
             editInput.style.display = 'block';
             editInput.focus();
             sendButton.style.display = 'block'
             paragraph.style.display = 'none';
+            optionsMenu.style.display = 'none';
             editInput.value = paragraph.textContent;
         })
     })
 
     function adjustTextareaHeight(textarea) {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-}
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
 </script>
 
 

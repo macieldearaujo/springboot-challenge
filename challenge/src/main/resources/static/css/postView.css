@@ -21,6 +21,61 @@
     min-height: auto;
 }
 
+.post-description {
+    cursor: text;
+    font-size: 15px;
+    color: var(--post-description);
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px 0px;
+    line-height: 1.55;
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+.post-options-menu {
+    width: 100px;
+    border-radius: 5px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.103);
+    font-size: 12px;
+    background-color: #FFFFFF;
+    padding: 5px;
+    list-style: none;
+    margin-left: 10px;
+}
+
+.post-title {
+    cursor: default;
+    font-size: 45px;
+    color: var(--title);
+    margin-top: 25px;
+    margin-bottom: 3px;
+}
+
+.post-options-menu-actions {
+    cursor: pointer;
+    font-weight: bold;
+    bottom: 0;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 15px;
+    display: block;
+    padding: 7px 4px;
+    border-radius: 5px;
+}
+
+.post-options-menu-actions:hover {
+    background-color: #e9e9ee;
+}
+
+.post-options {
+    opacity: 70%;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+}
+
 .post-info {
     cursor: pointer;
     font-size: 14px;
@@ -32,26 +87,6 @@
     font-size: 17px;
     color: #ffa500;
     font-weight: bold;
-}
-
-.post-title {
-    cursor: default;
-    font-size: 48px;
-    color: var(--title);
-    margin-top: 25px;
-    margin-bottom: 3px;
-}
-
-.post-description {
-    cursor: text;
-    font-size: 15px;
-    color: var(--post-description);
-    box-sizing: border-box;
-    width: 100%;
-    margin: 20px 0px;
-    line-height: 1.55;
-    border-radius: 10px;
-    padding-bottom: 20px;
 }
 
 
@@ -123,6 +158,11 @@
     margin: 15px 20px;
 }
 
+.comment-info {
+    display: flex;
+    align-items: center;
+}
+
 .username {
     padding: 5px;
     font-size: 17px;
@@ -163,6 +203,7 @@
 
 .comment-options-menu-actions {
     cursor: pointer;
+    font-weight: bold;
     bottom: 0;
     color: rgb(0, 0, 0);
     font-weight: bold;
@@ -193,9 +234,8 @@
     border: none;
     min-height: 50px;
     background-color: var(--input-comment-label);
-    width: 600px;
+    min-width: 500px;
     margin-bottom: 15px;
-    resize: none;
     outline: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
 }
@@ -213,4 +253,18 @@
     display: none;
     right: 0;
     bottom: 3%;
+}
+
+.deleteButton {
+    font-family: 'Open Sans';
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+}
+
+.post-option-wrapper {
+    display: flex;
+    align-items: center;
 }
