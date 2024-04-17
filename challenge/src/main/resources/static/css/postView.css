@@ -9,6 +9,7 @@
     --comment-description: #636363;
 }
 
+/* CSS Post */
 .container-post {
     background-color: var(--main-background);
     margin-bottom: 70px;
@@ -33,6 +34,21 @@
     line-height: 1.55;
     border-radius: 10px;
     padding-bottom: 20px;
+}
+
+.post-description-edit {
+    background-color: #f0f5fa;
+    font-size: 16px;
+    color: var(--post-description);
+    box-sizing: border-box;
+    width: 95%;
+    margin: 20px 0px;
+    line-height: 1.55;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    padding: 5px;
+    resize: none;
+    font-family: 'Open Sans', Arial, sans-serif;
 }
 
 .post-options {
@@ -71,6 +87,11 @@
     margin-bottom: 3px;
 }
 
+.post-option-wrapper {
+    display: flex;
+    align-items: center;
+}
+
 .post-options-menu-actions {
     cursor: pointer;
     bottom: 0;
@@ -101,6 +122,11 @@
     margin: 20px 0px 30px 0px;
 }
 
+.edit-form-post {
+    display: none;
+    align-items: center;
+}
+
 #author {
     color: #ffa500;
     font-weight: bold;
@@ -114,9 +140,10 @@
 }
 
 #timer {
-    width: 20px;  
+    width: 20px;
 }
 
+/* CSS Comment */
 .comment-details {
     font-size: 12px;
     color: rgb(182, 182, 182);
@@ -165,7 +192,7 @@
     font-size: 16px;
     color: white;
     margin-left: 10px;
-    background-color: #1f93ff;  
+    background-color: #1f93ff;
 }
 
 .comment {
@@ -267,11 +294,22 @@
     position: relative;
 }
 
-.comment-img {
-    position: absolute;
+.post-send-edit {
+    display: block;
+    background-color: transparent;
+    border: none;
+    width: 30px;
+    margin-left: auto;
+}
+
+.comment-send-edit {
     display: none;
-    right: 0;
-    bottom: 3%;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
 }
 
 .deleteButton {
@@ -283,7 +321,32 @@
     border: none;
 }
 
-.post-option-wrapper {
-    display: flex;
-    align-items: center;
+.comment-details a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.comment-details a:hover {
+    text-decoration: underline;
+}
+
+.comment-wrapper a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.comment-wrapper a:hover {
+    text-decoration: underline;
+}
+
+.comment-options-menu-actions a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.comment-options-menu-actions a:hover {
+    text-decoration: underline;
 }

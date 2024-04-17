@@ -41,20 +41,15 @@
                     <div class="post-option-wrapper">
                         <h1 th:text="${post.title}" class="post-title"></h1>
                         <img src="/img/icon_three_dots.png" class="post-options">
-                            <form method="post" class="post-options-menu" th:action="@{'/post/' + ${post.id}}">
-                                <ul>
-                                    <li class="post-options-menu-actions">
-                                        <h3>Edit your title</h3>
-                                        <p>Click here to edit your title</p>
-                                    </li>
-                                    <hr style="opacity: 10%">
-                                    <li class="post-options-menu-actions">
-                                        <h3>Edit your description</h3>
-                                        <p>Click here to edit your description</p>
-                                    </li>
-                                    <input type="hidden" name="action" value="delete">
-                                </ul>
-                            </form>
+                        <form method="post" class="post-options-menu" th:action="@{'/post/' + ${post.id}}">
+                            <ul>
+                                <li class="post-options-menu-actions edit-description">
+                                    <h3>Edit your description</h3>
+                                    <p>Click here to edit your description</p>
+                                </li>
+                                <input type="hidden" name="action" value="delete">
+                            </ul>
+                        </form>
                     </div>
                     <section class="post-details">
                         <span th:text="${post.author}" class="post-info" id="author"></span>
@@ -62,7 +57,11 @@
                         <img src="/img/icon_earth.png" alt="user_icon" class="icon-details-post" style="width: 20px;">
                     </section>
                     <p th:text="${post.description}" class="post-description"></p>
-
+                    <div class="edit-form-post">
+                        <textarea name="" class="post-description-edit"></textarea>
+                        <button type="submit" style="cursor: pointer;" class="post-send-edit"><img
+                                src="/img/icon_send.png"></button>
+                    </div>
                     <p th:text="${post.commentsNumber}" class="comment-details"></p>
                 </section>
                 <section class="comment-section">
@@ -86,7 +85,7 @@
                                     <textarea type="text" name="description"
                                         class="comment-edit comment-description"></textarea>
                                     <button type="submit" style="cursor: pointer;"><img src="/img/icon_send.png"
-                                            class="comment-img"></button>
+                                            class="comment-send-edit"></button>
                                 </div>
                             </div>
                         </form>
@@ -119,6 +118,7 @@
         const postOptions = document.querySelectorAll('.post-options');
         const postOptionsMenus = document.querySelectorAll('.post-options-menu');
 
+        // Close and open comment options
         commentOptions.forEach((option, i) => {
             option.addEventListener('click', () => {
                 const commentOptionsMenu = option.nextElementSibling;
@@ -132,6 +132,7 @@
             });
         });
 
+        // Close and open post options
         postOptions.forEach((option, i) => {
             option.addEventListener('click', () => {
                 const postOptionsMenu = option.nextElementSibling;
@@ -144,19 +145,33 @@
                 postOptionsMenu.classList.toggle('show-menu');
             });
         });
-        
+
     });
 
-    const editCommentForm = document.querySelectorAll('.comment-wrapper');
-    const editPostForm = document.querySelectorAll('.post-wrapper');
 
+    // Post edit
+    const paragraph = document.querySelector('.post-description');
+    const editButtonPost = document.querySelector('.edit-description');
+    const editInput = document.querySelector('.post-description-edit');
+    const postOptions = document.querySelector('.post-options-menu');
+    const editPost = document.querySelector('.edit-form-post');
+
+    editButtonPost.addEventListener('click', () => {
+        paragraph.style.display = 'none';
+        editInput.style.display = 'block';
+        editInput.value = paragraph.textContent;
+        editPost.style.display = 'flex';
+        postOptions.classList.remove('show-menu')
+        editInput.focus();
+    })
+
+    // Comment edit
+    const editCommentForm = document.querySelectorAll('.comment-wrapper');
     editCommentForm.forEach((item, i) => {
         const paragraph = item.querySelector('.comment-description');
         const editInput = item.querySelector('.comment-edit');
         const editButtonComment = item.querySelector('.comment-options-menu-actions');
-        const deleteButton = item.querySelector('.deleteButton');
-        const commentContent = item.querySelector('.comment-content');
-        const sendButton = item.querySelector('.comment-img');
+        const sendButton = item.querySelector('.comment-send-edit');
         const optionsMenu = item.querySelector('.comment-options-menu');
 
         editButtonComment.addEventListener('click', () => {
@@ -165,7 +180,7 @@
                     otherItem.querySelector('.comment-edit').style.display = 'none';
                     otherItem.querySelector('.comment-description').style.display = 'block';
                     otherItem.querySelector('.comment-options-menu').classList.remove('show-menu');
-                    otherItem.querySelector('.comment-img').style.display = 'none';
+                    otherItem.querySelector('.comment-send-edit').style.display = 'none';
                 }
             });
             const editOptions = document.querySelector('.comment-options-menu');
@@ -179,36 +194,12 @@
         })
     })
 
-    // editPostForm.forEach((item, i) => {
-    //     const paragraph = item.querySelector('.post-description');
-    //     const editButtonPost = item.querySelector('.post-options-menu-actions');
-    //     const editInput = item.querySelector('.post-edit');
-    //     const deleteButton = item.querySelector('.deleteButton');
-    //     const commentContent = item.querySelector('.post-content');
-    //     const sendButton = item.querySelector('.post-img');
-    //     const optionsMenu = item.querySelector('.post-options-menu');
-
-    //     editButtonPost.addEventListener('click', () => {
-    //         editPostForm.forEach((otherItem) => {
-    //             if (otherItem !== item) {
-    //                 otherItem.querySelector('.post-edit').style.display = 'none';
-    //                 otherItem.querySelector('.post-description').style.display = 'block';
-    //                 otherItem.querySelector('.post-options-menu').classList.remove('show-menu');
-    //                 otherItem.querySelector('.post-img').style.display = 'none';
-    //             }
-    //         });
-    //         const editOptions = document.querySelector('.comment-options-menu');
-    //         editOptions.classList.remove('show-menu');
-    //         editInput.style.display = 'block';
-    //         editInput.focus();
-    //         sendButton.style.display = 'block'
-    //         paragraph.style.display = 'none';
-    //         optionsMenu.style.display = 'none';
-    //         editInput.value = paragraph.textContent;
-    //     })
-    // })
-    
-
+    // Increase the textarea height when you type
+    const textarea = document.querySelector('.post-description-edit');
+    textarea.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
     function adjustTextareaHeight(textarea) {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
