@@ -53,7 +53,6 @@ public class PostController {
     public String showPosts(@PathVariable Long id, Model model) {
         Post post = postService.findPostById(id);
         model.addAttribute("post", post);
-
         List<Comment> comment = commentService.findCommentsByPostId(id).stream().filter(x -> x.getIdPost().equals(id))
                 .collect(Collectors.toList());
 
@@ -69,19 +68,16 @@ public class PostController {
         if (commentId == null) {
             Comment createNewComment = new Comment(null, comment.getDescription(), id);
             commentService.saveComment(createNewComment);
-            System.out.println("Adicionar");
         } else {
             Comment findComment = commentService.findCommentById(commentId);
             findComment.setDescription(comment.getDescription());
             commentService.saveComment(findComment);
-            System.out.println("Edit");
         }
         return "redirect:/post/" + id;
     }
 
     @PostMapping("/post/{id}/comment/{commentId}/delete")
     public String deleteComment(@PathVariable Long id, @PathVariable Long commentId) {
-        System.out.println("deu certo");
         commentService.deleteComment(commentId);
         return "redirect:/post/" + id;
     }    

@@ -44,7 +44,6 @@ public class Comment implements Serializable {
         idPost = post.orElse(null).getId();
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
