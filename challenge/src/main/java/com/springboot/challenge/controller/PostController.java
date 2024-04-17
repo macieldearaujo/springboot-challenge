@@ -36,8 +36,21 @@ public class PostController {
         return "feed";
     }
 
+    @GetMapping("/new-post")
+    public String showFeed() {
+        return "newPost";
+    }
+
+    @PostMapping("/new-post")
+    public String submitPost(Post post) {
+        Post newPost = new Post(null, post.getTitle(), post.getAuthor(), post.getDescription(), new Date());
+        postService.savePost(newPost);
+
+        return "redirect:/";
+    }
+
     @GetMapping("/post/{id}")
-    public String showPostDetails(@PathVariable Long id, Model model) {
+    public String showPosts(@PathVariable Long id, Model model) {
         Post post = postService.findPostById(id);
         model.addAttribute("post", post);
 
@@ -66,21 +79,8 @@ public class PostController {
         return "redirect:/post/" + id;
     }
 
-    @GetMapping("/new-post")
-    public String showFeedPost() {
-        return "newPost";
-    }
-
-    @PostMapping("/new-post")
-    public String submitForm(Post post) {
-        Post newPost = new Post(null, post.getTitle(), post.getAuthor(), post.getDescription(), new Date());
-        postService.savePost(newPost);
-
-        return "redirect:/";
-    }
-
     @PostMapping("/post/{id}/comment/{commentId}/delete")
-    public String postMethodName(@PathVariable Long id, @PathVariable Long commentId) {
+    public String deleteComment(@PathVariable Long id, @PathVariable Long commentId) {
         System.out.println("deu certo");
         commentService.deleteComment(commentId);
         return "redirect:/post/" + id;

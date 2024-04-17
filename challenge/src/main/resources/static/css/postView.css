@@ -47,7 +47,7 @@
     overflow: auto;
     border: 2px solid black;
     padding-bottom: 20px;
-    padding: 5px;
+    padding: 8px;
     resize: none;
     font-family: 'Open Sans', Arial, sans-serif;
 }
@@ -251,7 +251,6 @@
     cursor: pointer;
     font-weight: bold;
     bottom: 0;
-    color: rgb(0, 0, 0);
     font-weight: bold;
     font-size: 15px;
     display: block;
@@ -271,7 +270,7 @@
     height: auto;
 }
 
-.comment-edit {
+.comment-description-edit {
     display: none;
     font-family: 'Open Sans';
     font-size: 16px;
@@ -282,12 +281,13 @@
     background-color: var(--input-comment-label);
     min-width: 500px;
     resize: none;
+    padding: 8px;
     margin-bottom: 15px;
     outline: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
 }
 
-.comment-edit:focus {
+.comment-description-edit:focus {
     border-color: rgba(0, 0, 0, 0.253);
 }
 
@@ -350,4 +350,12 @@
 
 .comment-options-menu-actions a:hover {
     text-decoration: underline;
+}
+
+.obsolete {
+    color: red;
+}
+
+.obsolete:hover {
+    background-color: rgba(255, 0, 0, 0.048);
 }

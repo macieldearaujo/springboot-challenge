@@ -44,40 +44,32 @@ public class Comment implements Serializable {
         idPost = post.orElse(null).getId();
     }
 
+    // Getters and setters
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public Long getIdPost() {
         return idPost;
     }
-
     public void setIdPost(Long idPost) {
         this.idPost = idPost;
     }
-
     public Post getPost() {
         return post;
     }
-
     public void setPost(Post post) {
         this.post = post;
     }
-
     @Override
     public String toString() {
         return "Comment [id=" + id + ", description=" + description + ", idPost=" + idPost + "]";
-    }
-}
+    }}

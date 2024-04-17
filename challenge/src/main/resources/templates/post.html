@@ -43,9 +43,14 @@
                         <img src="/img/icon_three_dots.png" class="post-options">
                         <div class="post-options-menu">
                             <ul>
-                                <li class="post-options-menu-actions edit-description">
+                                <li class="post-options-menu-actions edit-description obsolete">
                                     <h3>Edit your description</h3>
                                     <p>Click here to edit your description</p>
+                                </li>
+                                <hr style="opacity: 10%;">
+                                <li class="post-options-menu-actions obsolete">
+                                    <h3>Delete your Post</h3>
+                                    <p>Click here to delete your post</p>
                                 </li>
                                 <input type="hidden" name="action" value="delete">
                             </ul>
@@ -57,11 +62,11 @@
                         <img src="/img/icon_earth.png" alt="user_icon" class="icon-details-post" style="width: 20px;">
                     </section>
                     <p th:text="${post.description}" class="post-description"></p>
-                    <form method="post" class="edit-form-post">
-                        <textarea name="" class="post-description-edit"></textarea>
+                    <div method="post" class="edit-form-post">
+                        <textarea name="description" class="post-description-edit"></textarea>
                         <button type="submit" style="cursor: pointer;" class="post-send-edit"><img
                                 src="/img/icon_send.png"></button>
-                        </form>
+                    </div>
                     <p th:text="${post.commentsNumber}" class="comment-details"></p>
                 </section>
                 <section class="comment-section">
@@ -83,7 +88,7 @@
                                     <p th:text="${comment.description}" class="comment-description"></p>
                                     <input type="hidden" name="commentId" th:value="${comment.Id}">
                                     <textarea type="text" name="description"
-                                        class="comment-edit comment-description"></textarea>
+                                        class="comment-description-edit comment-description"></textarea>
                                     <button type="submit" style="cursor: pointer;"><img src="/img/icon_send.png"
                                             class="comment-send-edit"></button>
                                 </div>
@@ -96,8 +101,8 @@
                                 <li class="comment-options-menu-actions">Editar</li>
                                 <hr style="opacity: 10%">
                                 <input type="hidden" name="action" value="delete">
-                                <li class="comment-options-menu-actions"><button type="submit"
-                                        class="deleteButton">Excluir</button></li>
+                                <li class="comment-options-menu-actions obsolete"><button type="submit"
+                                        class="deleteButton obsolete">Excluir</button></li>
                             </ul>
                         </form>
                     </div>
@@ -169,7 +174,7 @@
     const editCommentForm = document.querySelectorAll('.comment-wrapper');
     editCommentForm.forEach((item, i) => {
         const paragraph = item.querySelector('.comment-description');
-        const editInput = item.querySelector('.comment-edit');
+        const editInput = item.querySelector('.comment-description-edit');
         const editButtonComment = item.querySelector('.comment-options-menu-actions');
         const sendButton = item.querySelector('.comment-send-edit');
         const optionsMenu = item.querySelector('.comment-options-menu');
@@ -177,7 +182,7 @@
         editButtonComment.addEventListener('click', () => {
             editCommentForm.forEach((otherItem) => {
                 if (otherItem !== item) {
-                    otherItem.querySelector('.comment-edit').style.display = 'none';
+                    otherItem.querySelector('.comment-description-edit').style.display = 'none';
                     otherItem.querySelector('.comment-description').style.display = 'block';
                     otherItem.querySelector('.comment-options-menu').classList.remove('show-menu');
                     otherItem.querySelector('.comment-send-edit').style.display = 'none';
@@ -195,14 +200,14 @@
     })
 
     // Increase the textarea height when you type
-    const textarea = document.querySelector('.post-description-edit');
-    textarea.addEventListener('input', function () {
+    const textareaPost = document.querySelector('.post-description-edit');
+    document.addEventListener('input', function (event) {
         this.style.height = 'auto';
         this.style.height = (this.scrollHeight) + 'px';
     });
-    function adjustTextareaHeight(textarea) {
-        textarea.style.height = 'auto';
-        textarea.style.height = textarea.scrollHeight + 'px';
+    function adjustTextareaHeight(textareaPost) {
+        textareaPost.style.height = 'auto';
+        textareaPost.style.height = textareaPost.scrollHeight + 'px';
     }
 </script>
 

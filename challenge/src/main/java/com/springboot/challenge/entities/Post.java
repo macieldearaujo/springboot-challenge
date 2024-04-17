@@ -23,7 +23,6 @@ import jakarta.persistence.Transient;
 @Entity
 @Table(name = "posts")
 public class Post implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -40,7 +39,7 @@ public class Post implements Serializable {
     private String description;
 
     @Transient
-    private Photo image;
+    private Photo image; // not implemented
 
     @Column(nullable=false)
     private Date date;
@@ -66,56 +65,42 @@ public class Post implements Serializable {
     public Long getId() {
         return id;
     }
-
     public String getAuthor() {
         return author;
     }
-
     public void setAuthor(String author) {
         this.author = author;
     }
-
     public Date getDate() {
         return date;
     }
-
     public void setDate(Date date) {
         this.date = date;
     }
-
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public Photo getImage() {
         return image;
     }
-
     public void setImage(Photo image) {
         this.image = image;
     }
-
     public List<Comment> getComments() {
     return comments;
     }
-
     public void setComments(List<Comment> comments) {
     this.comments = comments;
-    }
-
-    
+    }   
 
     public String commentsNumber() {
         return comments.size() + " comments";
