@@ -37,7 +37,6 @@
 }
 
 .post-description-edit {
-    background-color: #f0f5fa;
     font-size: 16px;
     color: var(--post-description);
     box-sizing: border-box;
@@ -45,6 +44,8 @@
     margin: 20px 0px;
     line-height: 1.55;
     border-radius: 10px;
+    overflow: auto;
+    border: 2px solid black;
     padding-bottom: 20px;
     padding: 5px;
     resize: none;

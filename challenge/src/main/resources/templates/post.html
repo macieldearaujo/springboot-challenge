@@ -41,7 +41,7 @@
                     <div class="post-option-wrapper">
                         <h1 th:text="${post.title}" class="post-title"></h1>
                         <img src="/img/icon_three_dots.png" class="post-options">
-                        <form method="post" class="post-options-menu" th:action="@{'/post/' + ${post.id}}">
+                        <div class="post-options-menu">
                             <ul>
                                 <li class="post-options-menu-actions edit-description">
                                     <h3>Edit your description</h3>
@@ -49,7 +49,7 @@
                                 </li>
                                 <input type="hidden" name="action" value="delete">
                             </ul>
-                        </form>
+                        </div>
                     </div>
                     <section class="post-details">
                         <span th:text="${post.author}" class="post-info" id="author"></span>
@@ -57,11 +57,11 @@
                         <img src="/img/icon_earth.png" alt="user_icon" class="icon-details-post" style="width: 20px;">
                     </section>
                     <p th:text="${post.description}" class="post-description"></p>
-                    <div class="edit-form-post">
+                    <form method="post" class="edit-form-post">
                         <textarea name="" class="post-description-edit"></textarea>
                         <button type="submit" style="cursor: pointer;" class="post-send-edit"><img
                                 src="/img/icon_send.png"></button>
-                    </div>
+                        </form>
                     <p th:text="${post.commentsNumber}" class="comment-details"></p>
                 </section>
                 <section class="comment-section">
