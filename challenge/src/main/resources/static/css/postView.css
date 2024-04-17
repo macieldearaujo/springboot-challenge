@@ -1,7 +1,7 @@
 :root {
     --main-background: #FFFFFF;
     --post-info: #525252;
-    --post-description: #474747;
+    --post-description: #1f1f1f;
     --input-comment-label: #F1F2F6;
     --title: #002538;
     --post-comment-section: #F0F2F5;
@@ -11,11 +11,13 @@
 
 .container-post {
     background-color: var(--main-background);
+    margin-bottom: 70px;
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.171);
     border-radius: 20px;
 }
 
 .post {
+    position: relative;
     word-wrap: break-word;
     padding: 10px 40px 10px 40px;
     min-height: auto;
@@ -23,7 +25,7 @@
 
 .post-description {
     cursor: text;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--post-description);
     box-sizing: border-box;
     width: 100%;
@@ -33,10 +35,26 @@
     padding-bottom: 20px;
 }
 
+.post-options {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    opacity: 70%;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+}
+
 .post-options-menu {
-    width: 100px;
+    display: none;
+    z-index: 1;
+    position: absolute;
+    right: 40px;
+    top: 80px;
+    width: 300px;
     border-radius: 5px;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.103);
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.199);
     font-size: 12px;
     background-color: #FFFFFF;
     padding: 5px;
@@ -46,6 +64,7 @@
 
 .post-title {
     cursor: default;
+    width: 90%;
     font-size: 45px;
     color: var(--title);
     margin-top: 25px;
@@ -54,39 +73,38 @@
 
 .post-options-menu-actions {
     cursor: pointer;
-    font-weight: bold;
     bottom: 0;
     color: rgb(0, 0, 0);
-    font-weight: bold;
     font-size: 15px;
     display: block;
     padding: 7px 4px;
     border-radius: 5px;
 }
 
+.post-options-menu-actions h3 {
+    font-size: 18px;
+}
+
+.post-options-menu-actions p {
+    font-size: 12px;
+    color: gray;
+}
+
 .post-options-menu-actions:hover {
     background-color: #e9e9ee;
 }
 
-.post-options {
-    opacity: 70%;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    width: 30px;
-}
-
 .post-info {
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--post-info);
     margin: 20px 0px 30px 0px;
 }
 
 #author {
-    font-size: 17px;
     color: #ffa500;
     font-weight: bold;
+    margin-right: 5px;
 }
 
 
@@ -235,6 +253,7 @@
     min-height: 50px;
     background-color: var(--input-comment-label);
     min-width: 500px;
+    resize: none;
     margin-bottom: 15px;
     outline: 1px solid rgb(0, 0, 0);
     border-radius: 10px;

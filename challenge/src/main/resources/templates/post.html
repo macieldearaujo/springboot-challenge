@@ -41,15 +41,20 @@
                     <div class="post-option-wrapper">
                         <h1 th:text="${post.title}" class="post-title"></h1>
                         <img src="/img/icon_three_dots.png" class="post-options">
-                        <form method="post" class="post-options-menu" th:action="@{'/post/' + ${post.id}}">
-                            <ul>
-                                <li class="post-options-menu-actions">Editar</li>
-                                <hr style="opacity: 10%">
-                                <input type="hidden" name="action" value="delete">
-                                <li class="post-options-menu-actions"><button type="submit"
-                                        class="deleteButton">Excluir</button></li>
-                            </ul>
-                        </form>
+                            <form method="post" class="post-options-menu" th:action="@{'/post/' + ${post.id}}">
+                                <ul>
+                                    <li class="post-options-menu-actions">
+                                        <h3>Edit your title</h3>
+                                        <p>Click here to edit your title</p>
+                                    </li>
+                                    <hr style="opacity: 10%">
+                                    <li class="post-options-menu-actions">
+                                        <h3>Edit your description</h3>
+                                        <p>Click here to edit your description</p>
+                                    </li>
+                                    <input type="hidden" name="action" value="delete">
+                                </ul>
+                            </form>
                     </div>
                     <section class="post-details">
                         <span th:text="${post.author}" class="post-info" id="author"></span>
@@ -78,8 +83,8 @@
                                 <div class="comment-content">
                                     <p th:text="${comment.description}" class="comment-description"></p>
                                     <input type="hidden" name="commentId" th:value="${comment.Id}">
-                                    <input type="text" name="description"
-                                        class="comment-edit comment-description"></input>
+                                    <textarea type="text" name="description"
+                                        class="comment-edit comment-description"></textarea>
                                     <button type="submit" style="cursor: pointer;"><img src="/img/icon_send.png"
                                             class="comment-img"></button>
                                 </div>
@@ -111,6 +116,9 @@
         const commentOptions = document.querySelectorAll('.comment-options');
         const commentOptionsMenus = document.querySelectorAll('.comment-options-menu');
 
+        const postOptions = document.querySelectorAll('.post-options');
+        const postOptionsMenus = document.querySelectorAll('.post-options-menu');
+
         commentOptions.forEach((option, i) => {
             option.addEventListener('click', () => {
                 const commentOptionsMenu = option.nextElementSibling;
@@ -123,20 +131,35 @@
                 commentOptionsMenu.classList.toggle('show-menu');
             });
         });
+
+        postOptions.forEach((option, i) => {
+            option.addEventListener('click', () => {
+                const postOptionsMenu = option.nextElementSibling;
+
+                postOptionsMenus.forEach(menu => {
+                    if (menu !== postOptionsMenu) {
+                        menu.classList.remove('show-menu');
+                    }
+                })
+                postOptionsMenu.classList.toggle('show-menu');
+            });
+        });
+        
     });
 
     const editCommentForm = document.querySelectorAll('.comment-wrapper');
+    const editPostForm = document.querySelectorAll('.post-wrapper');
 
     editCommentForm.forEach((item, i) => {
         const paragraph = item.querySelector('.comment-description');
         const editInput = item.querySelector('.comment-edit');
-        const editButton = item.querySelector('.comment-options-menu-actions');
+        const editButtonComment = item.querySelector('.comment-options-menu-actions');
         const deleteButton = item.querySelector('.deleteButton');
         const commentContent = item.querySelector('.comment-content');
         const sendButton = item.querySelector('.comment-img');
         const optionsMenu = item.querySelector('.comment-options-menu');
 
-        editButton.addEventListener('click', () => {
+        editButtonComment.addEventListener('click', () => {
             editCommentForm.forEach((otherItem) => {
                 if (otherItem !== item) {
                     otherItem.querySelector('.comment-edit').style.display = 'none';
@@ -155,6 +178,36 @@
             editInput.value = paragraph.textContent;
         })
     })
+
+    // editPostForm.forEach((item, i) => {
+    //     const paragraph = item.querySelector('.post-description');
+    //     const editButtonPost = item.querySelector('.post-options-menu-actions');
+    //     const editInput = item.querySelector('.post-edit');
+    //     const deleteButton = item.querySelector('.deleteButton');
+    //     const commentContent = item.querySelector('.post-content');
+    //     const sendButton = item.querySelector('.post-img');
+    //     const optionsMenu = item.querySelector('.post-options-menu');
+
+    //     editButtonPost.addEventListener('click', () => {
+    //         editPostForm.forEach((otherItem) => {
+    //             if (otherItem !== item) {
+    //                 otherItem.querySelector('.post-edit').style.display = 'none';
+    //                 otherItem.querySelector('.post-description').style.display = 'block';
+    //                 otherItem.querySelector('.post-options-menu').classList.remove('show-menu');
+    //                 otherItem.querySelector('.post-img').style.display = 'none';
+    //             }
+    //         });
+    //         const editOptions = document.querySelector('.comment-options-menu');
+    //         editOptions.classList.remove('show-menu');
+    //         editInput.style.display = 'block';
+    //         editInput.focus();
+    //         sendButton.style.display = 'block'
+    //         paragraph.style.display = 'none';
+    //         optionsMenu.style.display = 'none';
+    //         editInput.value = paragraph.textContent;
+    //     })
+    // })
+    
 
     function adjustTextareaHeight(textarea) {
         textarea.style.height = 'auto';
